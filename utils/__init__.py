@@ -1,0 +1,1 @@
+"""Supplied local retrieval components."""
