@@ -141,10 +141,10 @@ class TestMakeChunks:
 
     def test_prompt_chunking_example(self):
         # text = "ABCDEFGHIJ", chunk_size = 4, overlap = 1 -> step = 3
-        # Expected: "ABCD", "DEFG", "GHIJ", "J"
+        # Chunks: "ABCD", "DEFG", "GHIJ" (terminates once text is fully covered)
         text = "ABCDEFGHIJ"
         chunks = make_chunks(text, "equipment_manual.txt", 4, 1)
-        expected = ["ABCD", "DEFG", "GHIJ", "J"]
+        expected = ["ABCD", "DEFG", "GHIJ"]
         assert [c.page_content for c in chunks] == expected
         for i, chunk in enumerate(chunks):
             assert chunk.metadata == {

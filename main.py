@@ -56,18 +56,20 @@ def make_chunks(
     validate_chunk_config(chunk_size, overlap, 1)
     if not text:
         return []
-    if len(text) <= chunk_size:
-        return [Document(page_content=text, metadata={"source": source, "chunk_index": 0})]
 
     step = chunk_size - overlap
     chunks = []
-    for index, start in enumerate(range(0, len(text), step)):
+    start = 0
+    while start < len(text):
         chunks.append(
             Document(
                 page_content=text[start : start + chunk_size],
-                metadata={"source": source, "chunk_index": index},
+                metadata={"source": source, "chunk_index": len(chunks)},
             )
         )
+        if start + chunk_size >= len(text):
+            break
+        start += step
     return chunks
 
 

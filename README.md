@@ -105,10 +105,9 @@ Given:
 | 0 | 0 | `text[0:4]` | `"ABCD"` | 0 |
 | 1 | 3 | `text[3:7]` | `"DEFG"` | 1 |
 | 2 | 6 | `text[6:10]` | `"GHIJ"` | 2 |
-| 3 | 9 | `text[9:13]` (bounded to text length) | `"J"` | 3 |
-| Terminate | 12 | $12 \ge \text{len}(text)$ | Loop Ends | - |
+| Terminate | 6 | $6 + 4 \ge \text{len}(text)$ | Loop Ends (Full Text Covered) | - |
 
-**Resulting Chunks:** `["ABCD", "DEFG", "GHIJ", "J"]`
+**Resulting Chunks:** `["ABCD", "DEFG", "GHIJ"]`
 
 ---
 
